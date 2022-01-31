@@ -1,0 +1,45 @@
+.body{
+    width: 100% !important;
+    height: 100% !important;
+}
+.submit-area{
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+    margin: 60px 200px 0px 200px;
+}
+.input-area{
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px gray;
+    margin: 60px 0px;
+}
+.form-title{
+    margin-top: 60px;
+}
+#transaction-area{
+    display: none;
+    margin: 60px 0px;
+}
+#emailHelp{
+    color:crimson;
+    margin-bottom: 20px;
+}
+.status{
+    margin: 0px 15px;
+    color: white;
+    padding: 25px;
+    border-radius: 8px;
+}
+.deposit{
+    background-color: darkorange;
+    margin-bottom: 20px;
+}
+.withdraw{
+    background-color: deepskyblue;
+    margin-bottom: 20px;
+}
+.balance{
+    background-color: darkorchid;
+    margin-bottom: 20px;
+}

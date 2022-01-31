@@ -5,11 +5,127 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="bank.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
     <title>Web Bank</title>
 </head>
 
 <body>
+    <div class="container-fluid">
+        <div id="login-area">
+            <h1 class="text-center form-title">Welcome To Web Bank</h1>
+            <div class="submit-area">
+                <div class="mb-3">
+                    <h4>Login</h4>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Email">
+                    <div id="emailHelp" class="form-text fst-italic fw-lighter">We'll never share your email with anyone
+                        else.</div>
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                </div>
+                <button type="Enter" class="btn btn-success" id="enter-btn">Submit</button>
+            </div>
+        </div>
 
+        <div id="transaction-area">
+            <!-- <h1 class='text-center'>Transaction Area</h1> -->
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+                    <div class="deposit status">
+                        <h5>Deposit</h5>
+                        <h2>$ <span id="current-depo"> 00</span> </h2>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+                    <div class="withdraw status">
+                        <h5>Withdraw</h5>
+                        <h2>$ <span id="withdraw-amount">00</span> </h2>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
+                    <div class="balance status">
+                        <h5>Balance</h5>
+                        <h2>$ <span id="current-balance">1000</span> </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <div class="input-area">
+                        <h4>Deposit</h4>
+                        <label for="">
+                            <input id="depo-amount" type="text" class="form-control">
+                        </label>
+                        <div id="emailHelp" class="form-text fst-italic fw-lighter">$ amount you want to deposit</div>
+                        <div id="depo-button" class="btn btn-success">Deposit</div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6 col-xxl-6">
+                    <div class="input-area">
+                        <h4>Withdraw</h4>
+                        <label for="">
+                            <input id="withdrawAmount" type="text" class="form-control">
+                        </label>
+                        <div id="emailHelp" class="form-text fst-italic fw-lighter">$ amount you want to deposit</div>
+                        <div id="withdraw-button" class="btn btn-success">Withdraw</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        //login button event handler
+        let enterBtn = document.getElementById('enter-btn')
+        enterBtn.addEventListener("click", function (event) {
+            document.getElementById("login-area").style.display = "none"
+            const transactionArea =
+                document.getElementById("transaction-area")
+            transactionArea.style.display = "block"
+        })
+
+        //deposit button event handler
+
+        let depoBtn = document.getElementById("depo-button")
+        depoBtn.addEventListener("click", function (event) {
+            /* const depoAmount = parseFloat(document.getElementById("depo-amount").value) */
+            /* const currentDepo = parseFloat(document.getElementById("current-depo").innerText)
+            const totalDepo = depoAmount + currentDepo
+            console.log(totalDepo)
+            document.getElementById("current-depo").innerText = totalDepo */
+
+            const depoAmount = getInputNumber("depo-amount")
+            updateSpanText("current-depo", depoAmount)
+            //Current balance update
+            updateSpanText("current-balance", depoAmount)
+        })
+
+
+
+        let withdrawBtn = document.getElementById("withdraw-button")
+        withdrawBtn.addEventListener("click", function (event) {
+            /* const withdrawNumber = getInputNumber("withdraw-amount")
+            console.log(withdrawNumber) */
+
+            const withdrawNumber = getInputNumber("withdrawAmount")
+            console.log(withdrawNumber)
+        })
+
+        function getInputNumber(id) {
+            const withdrawAmt = parseFloat(document.getElementById(id).value)
+            // const withdrawNumber = parseFloat(withdrawAmt)
+            return withdrawAmt
+        }
+
+        function updateSpanText(id, depoAmount) {
+            const currBalance = parseFloat(document.getElementById(id).innerText)
+            const totalBalace = depoAmount + currBalance
+            document.getElementById(id).innerText = totalBalace
+        }
+    </script>
 </body>
 
 </html>

@@ -43,7 +43,7 @@
                 <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
                     <div class="withdraw status">
                         <h5>Withdraw</h5>
-                        <h2>$ <span id="withdraw-amount">00</span> </h2>
+                        <h2>$ <span id="current-withdraw">00</span> </h2>
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-4 col-xl-4 col-xxl-4">
@@ -101,6 +101,7 @@
             updateSpanText("current-depo", depoAmount)
             //Current balance update
             updateSpanText("current-balance", depoAmount)
+            document.getElementById("depo-amount").value = ""
         })
 
 
@@ -111,7 +112,10 @@
             console.log(withdrawNumber) */
 
             const withdrawNumber = getInputNumber("withdrawAmount")
-            console.log(withdrawNumber)
+            updateSpanText("current-withdraw", withdrawNumber)
+            updateSpanText("current-balance", -1 * withdrawNumber)
+            document.getElementById("withdrawAmount").value = ""
+
         })
 
         function getInputNumber(id) {
